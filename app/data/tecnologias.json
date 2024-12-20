@@ -1,3 +1,75 @@
-{
-    
-}
+[
+    {
+      "title": "HTML",
+      "image": "/images/html-logo.png",
+      "description": "A markup language for structuring and presenting web content.",
+      "rating": 5
+    },
+    {
+      "title": "CSS",
+      "image": "/images/css-logo.png",
+      "description": "A style sheet language used for describing the presentation of a document.",
+      "rating": 4
+    },
+    {
+      "title": "JavaScript",
+      "image": "/images/javascript-logo.png",
+      "description": "A programming language used to create dynamic and interactive web content.",
+      "rating": 5
+    },
+    {
+      "title": "JSON",
+      "image": "/images/json-logo.png",
+      "description": "A lightweight data-interchange format that is easy for humans and machines to read and write.",
+      "rating": 4
+    },
+    {
+      "title": "API RESTful",
+      "image": "/images/api-logo.png",
+      "description": "A software architectural style that defines constraints for creating web services.",
+      "rating": 5
+    },
+    {
+      "title": "Swagger",
+      "image": "/images/swagger-logo.png",
+      "description": "A toolset for documenting and testing RESTful APIs.",
+      "rating": 3
+    },
+    {
+      "title": "GitHub",
+      "image": "/images/github-logo.png",
+      "description": "A platform for version control and collaboration.",
+      "rating": 5
+    },
+    {
+      "title": "Codespaces",
+      "image": "/images/codespaces-logo.png",
+      "description": "A cloud development environment available in GitHub.",
+      "rating": 4
+    },
+    {
+      "title": "GitHub Pages",
+      "image": "/images/github-pages-logo.png",
+      "description": "A hosting service for static websites directly from a GitHub repository.",
+      "rating": 3
+    },
+    {
+      "title": "React.js",
+      "image": "/images/react-logo.png",
+      "description": "A JavaScript library for building user interfaces.",
+      "rating": 5
+    },
+    {
+      "title": "Next.js",
+      "image": "/images/nextjs-logo.png",
+      "description": "A React-based framework for building server-side rendered and static web applications.",
+      "rating": 5
+    },
+    {
+      "title": "Vercel",
+      "image": "/images/vercel-logo.png",
+      "description": "A platform for frontend developers to deploy websites and applications.",
+      "rating": 4
+    }
+  ]
+  

@@ -31,19 +31,27 @@ export default function ProdutosPage() {
             setCart(JSON.parse(storedCart));
         }
     }, []);
+
     useEffect(() => {
         localStorage.setItem('cart', JSON.stringify(cart));
     }, [cart]);
-
-
 
     const addToCart = (product: Product) => {
         setCart((prevCart) => [...prevCart, product]);
     };
 
-    const removeFromCart = (productId: number) => {
-        setCart((prevCart) => prevCart.filter((product) => product.id !== productId));
-    };
+    function removeFromCart(produtoId: number) {
+        setCart((prevCart) => {
+          const index = prevCart.findIndex((item) => item.id === produtoId);
+          if (index !== -1) {
+            const updatedCart = [...prevCart];
+            updatedCart.splice(index, 1);
+            return updatedCart;
+          }
+          return prevCart;
+        });
+      }
+      
 
     const buy = () => {
         fetch("/api/products", {
@@ -79,17 +87,32 @@ export default function ProdutosPage() {
 
     return (
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '24px' }}>
-            <h1 style={{backgroundColor:'#4CAF50', fontSize: '40px', fontWeight: '700', marginBottom: '24px' }}>Produtos Disponíveis</h1>
+            <h1 style={{ backgroundColor: '#4CAF50', fontSize: '40px', fontWeight: '700', marginBottom: '24px' }}>
+                Produtos Disponíveis
+            </h1>
             <div style={{ marginBottom: '16px' }}>
                 <input
                     type="text"
                     placeholder="Pesquisar"
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
-                    style={{ width: '100%', padding: '12px', border: '1px solid #D1D5DB', borderRadius: '8px', fontSize: '16px' }}
+                    style={{
+                        width: '100%',
+                        padding: '12px',
+                        border: '1px solid #D1D5DB',
+                        borderRadius: '8px',
+                        fontSize: '16px',
+                    }}
                 />
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '24px' }}>
+            <div
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                }}
+            >
                 {filteredData.map((product) => (
                     <Card
                         key={product.id}
@@ -103,12 +126,31 @@ export default function ProdutosPage() {
                 ))}
             </div>
             <div style={{ marginTop: '32px', paddingTop: '16px', borderTop: '2px solid #E5E7EB' }}>
-                <h2 style={{ backgroundColor:'#4CAF50', fontSize: '40px', color: 'white', fontWeight: '700', marginBottom: '16px', padding: '8px', borderRadius: '4px' }}>Carrinho</h2>
+                <h2
+                    style={{
+                        backgroundColor: '#4CAF50',
+                        fontSize: '40px',
+                        color: 'white',
+                        fontWeight: '700',
+                        marginBottom: '16px',
+                        padding: '8px',
+                        borderRadius: '4px',
+                    }}
+                >
+                    Carrinho
+                </h2>
                 {cart.length === 0 ? (
                     <p style={{ fontSize: '16px', color: '#6B7280' }}>Nenhum produto no carrinho.</p>
                 ) : (
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '24px' }}>
-                        {cart.map((item,i) => (
+                    <div
+                        style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                        }}
+                    >
+                        {cart.map((item, i) => (
                             <Card
                                 key={i}
                                 image={item.image}
@@ -125,7 +167,17 @@ export default function ProdutosPage() {
                 {cart.length > 0 && (
                     <button
                         onClick={buy}
-                        style={{ marginTop: '16px', backgroundColor: '#4CAF50', color: 'white', padding: '12px 24px', borderRadius: '4px', cursor: 'pointer', border: 'none', fontWeight: '700', fontSize: '16px' }}
+                        style={{
+                            marginTop: '16px',
+                            backgroundColor: '#4CAF50',
+                            color: 'white',
+                            padding: '12px 24px',
+                            borderRadius: '4px',
+                            cursor: 'pointer',
+                            border: 'none',
+                            fontWeight: '700',
+                            fontSize: '16px',
+                        }}
                     >
                         Comprar
                     </button>
